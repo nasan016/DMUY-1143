@@ -9,7 +9,23 @@ loadFonts()
 
 const pinia = createPinia()
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+/* import specific icons */
+import { faCubes, faFolder, faFolderOpen, faFolderTree, faScroll, faUserSecret } from '@fortawesome/free-solid-svg-icons'
+
+/* add icons to the library */
+library.add(faUserSecret)
+library.add(faCubes)
+library.add(faFolder)
+library.add(faScroll)
+library.add(faFolderOpen)
+library.add(faFolderTree)
 createApp(App)
+.component('font-awesome-icon', FontAwesomeIcon)
   .use(router)
   .use(pinia)
   .use(vuetify)
