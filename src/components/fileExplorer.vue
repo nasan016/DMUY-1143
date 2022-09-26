@@ -45,7 +45,7 @@ const linksTitles = ref([
         <transition name="slide-fade">
         <div v-if="isOpen">
         <div v-for="(item, idx) in linksTitles" :key="idx">
-            <div @click="index = idx; displayUpdate();update()" class="files d-flex align-center pl-8" v-ripple>
+            <div @click="index = idx; displayUpdate(); update()" class="files d-flex align-center pl-8" v-ripple>
                 <font-awesome-icon class="folderIcon" icon="fa-solid fa-scroll" />
                 <div class="links">&nbsp;&nbsp;{{ item }}.txt</div>
             </div>
