@@ -1,51 +1,39 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import FileExplorer from './components/fileExplorer.vue';
-import TextEditor from './components/textEditor.vue';
-import { display, links, index, displayUpdate } from './components/posts/blogHandler'
+import { ref } from "vue"
+import LandingPage from "./components/LandingPage.vue"
+import LinkLoader from "./components/LinkLoader.vue"
+
+const show_landing = ref(true)
+
 </script>
 
 <template>
-    <div>
-        <div class="header align-center d-flex w-101">
-          <div class="d-flex flex-row align-center pl-4">
-            <font-awesome-icon icon="fa-solid fa-cubes" />
-            <div class="font-weight-medium">&nbsp;&nbsp;BlogEditor</div>
-          </div>
-            <div class="d-flex justify-space-around w-100 ">
-                <div><span class="font-weight-medium">Nathan Macapinlac</span> / DMUY-1143</div>
+    <transition name="slide-fade" mode="out-in">
+        <div v-if="show_landing">
+            <div @click="show_landing=!show_landing">
+                <LandingPage/>
             </div>
         </div>
-        <v-divider class="divider"/>
-        <div class="d-flex flex-row">
-        <FileExplorer/>
-        <transition mode="out-in">
-        <TextEditor :key="index" />
-        </transition>
-      </div>
-    </div>
+        <div v-else>
+            <LinkLoader/>
+        </div>
+    </transition>
 </template>
 
 <style>
 @import './assets/base.css';
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.4s ease;
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
 }
 
-.v-enter-from,
-.v-leave-to {
+.slide-fade-leave-active {
+  transition: all 1s ease;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translatey(100%);
   opacity: 0;
-}
-
-.divider{
-  background-color: #8388AF;
-}
-
-.header{
-  height: 50px;
-  line-height: 50px;
-  user-select: none;
-  z-index: 100000;
 }
 </style>
