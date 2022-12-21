@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue"
-import { posts } from "./blog_posts"
+import { posts, show_screen } from "./blog_posts"
 
 const hover = ref(false)
 const week_number = ref(0)
@@ -14,6 +14,12 @@ const week_number = ref(0)
             :key="idx"
             @click="week_number = idx">
                 {{ idx + 1}}.
+            </div>
+        </div>
+        <div class="mt-6 pb-0">
+            <div class="button-container"
+            @click="show_screen = 'archive'">
+                Archive.
             </div>
         </div>
     <transition name="slide-fade" mode="out-in">
